@@ -10,3 +10,7 @@ Then, pick the board and list you want the cards to appear on, and drag the link
 You can try it [here](http://lauantai.github.com/Trello-Bookmarklet-Maker).
 
 The code is [here](https://github.com/lauantai/Trello-Bookmarklet-Maker/tree/gh-pages).
+
+---
+
+Added ability to choose new card position (top or bottom)
