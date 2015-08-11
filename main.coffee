@@ -41,17 +41,23 @@ setupLists = (idBoard) ->
     select = span.find(".js-select")
     for list in data.lists
       select.append("<option value=\"#{list.id}\">#{list.name}</option>")
+    span = $(".js-pos-selector")
+    span.empty()
+    span.append("<input id=\"pos_top\" name=\"pos\" value=\"top\" type=\"radio\" class=\"js-pos-input\" checked></input>")
+    span.append("<input id=\"pos_bottom\" name=\"pos\" value=\"bottom\" type=\"radio\" class=\"js-pos-input\"></input>")
+    pos_input = span.find(".js-pos-input")
     button = $(".js-list-select-button")
     button.click( () ->
       idList = select.val()
-      makeBookmarklet(idBoard, idList)
+      pos = $('input[name=pos]:checked').val()
+      makeBookmarklet(idBoard, idList, pos)
     )
   )
 
-makeBookmarklet = (idBoard, idList) ->
+makeBookmarklet = (idBoard, idList, pos) ->
   token = Trello.token()
   key = Trello.key()
-  bookmarklet = "(function(){function b(){if(window.saveTrelloCard)saveTrelloCard(\"#{idList}\",\"#{key}\",\"#{token}\");else setTimeout(b,0)}var a=document.createElement(\"script\");a.setAttribute(\"type\",\"text/javascript\");a.setAttribute(\"charset\",\"UTF-8\");a.setAttribute(\"src\",\"https://raw.github.com/gist/3716000/92c2d4d37aa4cd0638714522cae6d7b07910b93e/saveToCard.js\");document.body.appendChild(a);setTimeout(b,0)})()"
+  bookmarklet = "(function(){function b(){if(window.saveTrelloCard)saveTrelloCard(\"#{idList}\",\"#{pos}\",\"#{key}\",\"#{token}\");else setTimeout(b,0)}var a=document.createElement(\"script\");a.setAttribute(\"type\",\"text/javascript\");a.setAttribute(\"charset\",\"UTF-8\");a.setAttribute(\"src\",\"https://raw.github.com/gist/3716000/92c2d4d37aa4cd0638714522cae6d7b07910b93e/saveToCard.js\");document.body.appendChild(a);setTimeout(b,0)})()"
   a = $('.js-show-link')
   a.attr("href", "javascript:#{bookmarklet}")
   a.html("Site to Trello Card")
