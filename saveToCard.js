@@ -14,7 +14,7 @@
     var opts;
     if (typeof jQuery === "undefined" || jQuery === null) {
       setTimeout((function() {
-        return saveTrelloCard(idList, key, token);
+        return saveTrelloCard(idList, pos, key, token);
       }), 0);
       return;
     }

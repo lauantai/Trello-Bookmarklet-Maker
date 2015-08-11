@@ -7,7 +7,7 @@ if !jQuery?
 
 window.saveTrelloCard = (idList, pos, key, token) ->
   if !jQuery?
-    setTimeout((() -> saveTrelloCard(idList, key, token)), 0)
+    setTimeout((() -> saveTrelloCard(idList, pos, key, token)), 0)
     return
   opts =
     url: "https://api.trello.com/1/cards"
