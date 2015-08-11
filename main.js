@@ -68,8 +68,10 @@
       }
       span = $(".js-pos-selector");
       span.empty();
-      span.append("<input id=\"pos_top\" name=\"pos\" value=\"top\" type=\"radio\" class=\"js-pos-input\" checked></input>");
-      span.append("<input id=\"pos_bottom\" name=\"pos\" value=\"bottom\" type=\"radio\" class=\"js-pos-input\"></input>");
+      span.append("<fieldset><legend>New card position:</legend>");
+      span.append("<label><input id=\"pos_top\" name=\"pos\" value=\"top\" type=\"radio\" class=\"js-pos-input\" checked> Top</label><br>");
+      span.append("<label><input id=\"pos_bottom\" name=\"pos\" value=\"bottom\" type=\"radio\" class=\"js-pos-input\"> Bottom</label><br>");
+      span.append("</fieldset>");
       pos_input = span.find(".js-pos-input");
       button = $(".js-list-select-button");
       return button.click(function() {
